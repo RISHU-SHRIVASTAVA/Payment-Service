@@ -1,5 +1,6 @@
 package paymentservice.paymentservice.controller;
 
+import com.stripe.exception.StripeException;
 import org.springframework.web.bind.annotation.*;
 import paymentservice.paymentservice.dtos.InitiatePaymentRequestDto;
 import paymentservice.paymentservice.services.PaymentService;
@@ -15,7 +16,7 @@ public class PaymentController {
     }
 
     @PostMapping("/")
-    public String intiatePayment(@RequestBody InitiatePaymentRequestDto requestDto){
+    public String intiatePayment(@RequestBody InitiatePaymentRequestDto requestDto) throws StripeException {
 
         String phoneNumber = requestDto.getPhoneNumber();
         return paymentService.initiatePayment(requestDto.getOrderId(),

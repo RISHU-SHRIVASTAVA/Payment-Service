@@ -1,5 +1,6 @@
 package paymentservice.paymentservice.services;
 
+import com.stripe.exception.StripeException;
 import org.springframework.stereotype.Service;
 import paymentservice.paymentservice.services.paymentGateway.PaymentGateway;
 
@@ -12,7 +13,7 @@ public class PaymentService {
         this.paymentGatewayChooseStrategy = paymentGatewayChooseStrategy;
     }
 
-    public String initiatePayment(String orderId, String email, String phoneNumber, Long amount){
+    public String initiatePayment(String orderId, String email, String phoneNumber, Long amount) throws StripeException {
         //Order order= orderService.getOrderDetails(ordeId);
         //Long amount = order.getAmount();
 
